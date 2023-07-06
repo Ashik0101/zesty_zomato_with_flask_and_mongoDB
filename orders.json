@@ -1,0 +1,30 @@
+[
+          {
+                    "customer_name": "ashik ansari",
+                    "order_id": 1,
+                    "quantity": 5,
+                    "status": "preparing",
+                    "total_price": 1000
+          },
+          {
+                    "customer_name": "rohan",
+                    "order_id": 2,
+                    "quantity": 5,
+                    "status": "ready for pickup",
+                    "total_price": 1000
+          },
+          {
+                    "customer_name": "aslam ansari",
+                    "order_id": 3,
+                    "quantity": 10,
+                    "status": "received",
+                    "total_price": 2000
+          },
+          {
+                    "customer_name": "alfaaaj",
+                    "order_id": 4,
+                    "quantity": 5,
+                    "status": "preparing",
+                    "total_price": 1025
+          }
+]
