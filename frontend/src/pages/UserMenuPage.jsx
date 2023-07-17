@@ -5,7 +5,8 @@ import styles from "../styles/Home.module.css";
 import url from "../components/url";
 import Modal from "../components/Modal";
 import Header from "../components/Header";
-const Home = () => {
+import UserMenuCard from "../components/UserMenuCard";
+const UserMenuPage = () => {
   const [data, setData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedCardData, setSelectedCardData] = useState(null);
@@ -24,19 +25,21 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
-    // console.log("data :", data);
+    console.log("data :", data);
   }, [toggle]);
 
   useEffect(() => {
-    // console.log("showModal:", showModal);
+    console.log("showModal:", showModal);
   }, [showModal]);
 
   useEffect(() => {
     document.body.classList.toggle("modal-open", showModal);
   }, [showModal]);
 
-  function handleDeleteClick() {
-    setToggle(!toggle);
+  function handleDeleteClick(id) {
+    setData((prevData) => {
+      prevData.filter((el) => el._id !== id);
+    });
   }
 
   function postUpdatedData(data) {
@@ -55,7 +58,7 @@ const Home = () => {
         return res.json();
       })
       .then((res) => {
-        alert(res.msg);
+        alert(res.message);
         setToggle(!toggle);
       });
   }
@@ -86,7 +89,7 @@ const Home = () => {
             <div className={styles.container}>
               {data.map((el, index) => {
                 return (
-                  <MenuCard
+                  <UserMenuCard
                     key={el._id}
                     data={el}
                     onDeleteClick={handleDeleteClick}
@@ -102,7 +105,7 @@ const Home = () => {
                     onCloseModal={handleCloseModal}
                     onUpdate={(updatedData) => {
                       // Handle update logic here, make POST request with updatedData
-                      // console.log("Updated data:", updatedData);
+                      console.log("Updated data:", updatedData);
                       postUpdatedData(updatedData);
                       handleCloseModal();
                     }}
@@ -117,4 +120,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default UserMenuPage;

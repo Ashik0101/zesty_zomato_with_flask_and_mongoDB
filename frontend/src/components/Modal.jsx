@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import '../styles/Modal.css';
+import React, { useState } from "react";
+import "../styles/Modal.css";
 
 const Modal = ({ data, onCloseModal, onUpdate }) => {
   const [updatedData, setUpdatedData] = useState({
-    id: data.id,
+    _id: data._id,
     image: data.image,
     availability: data.availability,
     price: data.price,
     stock: data.stock,
-    dish_name:data.dish_name
+    dish_name: data.dish_name,
   });
 
- 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUpdatedData((prevState) => ({
@@ -31,12 +30,7 @@ const Modal = ({ data, onCloseModal, onUpdate }) => {
         <h2>Update Modal</h2>
         <label>
           ID:
-          <input
-            type="text"
-            name="id"
-            value={updatedData.id}
-            onChange={handleInputChange}
-          />
+          <input type="text" name="id" value={updatedData._id} readOnly />
         </label>
         <label>
           Dish Name:
@@ -65,6 +59,18 @@ const Modal = ({ data, onCloseModal, onUpdate }) => {
             onChange={handleInputChange}
           />
         </label>
+        {/* <label>
+          Availability:
+         <select
+          name="availability"
+          value={updatedData.availability}
+          onChange={handleInputChange}
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </label> */}
+
         <label>
           Price:
           <input
@@ -83,11 +89,13 @@ const Modal = ({ data, onCloseModal, onUpdate }) => {
             onChange={handleInputChange}
           />
         </label>
-        <div className='button-container'>
-         <button onClick={handleUpdate} data-id={data.id}>
-           Update
-         </button>
-         <button onClick={onCloseModal}>Close</button>
+        <div className="button-container">
+          <button onClick={handleUpdate} data-id={data.id}>
+            Update
+          </button>
+          <button className="close-button" onClick={onCloseModal}>
+            Close
+          </button>
         </div>
       </div>
     </div>
