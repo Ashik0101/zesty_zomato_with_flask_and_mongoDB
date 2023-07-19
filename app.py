@@ -6,7 +6,12 @@ from bson import ObjectId
 from bson.errors import InvalidId
 import json
 
-# client = MongoClient('mongodb+srv://ashik:ashik@cluster0.t6n9xjt.mongodb.net/?retryWrites=true&w=majority')
+from dotenv import load_dotenv
+
+import os
+load_dotenv()
+
+# client = MongoClient(os.getenv('MONGO_URI'))
 
 # db = client['zesty_zomato']
 # collection = db['menu-data']
@@ -28,7 +33,7 @@ def create_app():
     app = Flask(__name__)
     CORS(app)
 
-    client = MongoClient('mongodb+srv://ashik:ashik@cluster0.t6n9xjt.mongodb.net/?retryWrites=true&w=majority')
+    client = MongoClient(os.getenv('MONGO_URI'))
 
     db = client['zesty_zomato']
     collection = db['menu-data']
